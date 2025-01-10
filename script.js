@@ -1,5 +1,5 @@
 // URL del backend
-const BASE_URL = 'http://localhost:3000';
+const BASE_URL = process.env.REACT_APP_BASE_URL || 'http://localhost:3000';
 
 // Elementos del DOM
 const userForm = document.getElementById('user-form');
