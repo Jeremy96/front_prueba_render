@@ -6,15 +6,9 @@ const userForm = document.getElementById('user-form');
 const userList = document.getElementById('user-list');
 
 // Función para obtener usuarios y mostrarlos
-// Función para obtener usuarios y mostrarlos
 const fetchUsers = async () => {
   try {
     const response = await fetch(`${BASE_URL}/usuarios`);
-
-    if (!response.ok) {
-      throw new Error('Error al obtener usuarios');
-    }
-
     const users = await response.json();
     
     userList.innerHTML = ''; // Limpiar lista antes de renderizar
@@ -26,7 +20,6 @@ const fetchUsers = async () => {
     });
   } catch (error) {
     console.error('Error al obtener usuarios:', error);
-    alert('Hubo un error al obtener los usuarios');
   }
 };
 
@@ -45,18 +38,15 @@ const addUser = async (event) => {
       body: JSON.stringify({ nombre, correo, edad }),
     });
 
-    if (!response.ok) {
-      throw new Error('Error al agregar el usuario');
+    if (response.ok) {
+      alert('Usuario agregado exitosamente');
+      fetchUsers(); // Actualizar la lista de usuarios
+      userForm.reset(); // Limpiar el formulario
+    } else {
+      alert('Error al agregar el usuario');
     }
-
-    const result = await response.json();
-    alert(result.message); // Mostrar mensaje de éxito
-
-    fetchUsers(); // Actualizar la lista de usuarios
-    userForm.reset(); // Limpiar el formulario
   } catch (error) {
     console.error('Error al agregar usuario:', error);
-    alert('Hubo un error al agregar el usuario');
   }
 };
 
