@@ -1,5 +1,5 @@
 // URL del backend
-const BASE_URL = 'https://talento-digital-modulo-9-clase-2-sesion.onrender.com' || 'http://localhost:3000';
+const BASE_URL = 'http://localhost:3000';//no usar esta url porque es la del profesor y ustedes al crearlo tendran otra 'https://talento-digital-modulo-9-clase-2-sesion.onrender.com' || 'http://localhost:3000';
 
 // Elementos del DOM
 const userForm = document.getElementById('user-form');
